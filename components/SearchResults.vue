@@ -2,6 +2,8 @@
 const media = useState('media-query');
 const recipes = useState('recipes');
 const searchOpened = useState('search-opened');
+const searched = useState('searched', () => false);
+
 const router = useRouter();
 
 function handleClose() {
@@ -34,7 +36,6 @@ function handleShowMore(e) {
 }
 
 function handleShowRecipe(e) {
-    // recipe
     router.push({
         path: `/recipe/${e.target.dataset.id}`
     })
@@ -43,21 +44,10 @@ function handleShowRecipe(e) {
     }, 100);
 }
 
-onMounted(async () => {
-    // const data = await $fetch(`/api/recipes/${search}`, {
-    //     method: 'POST',
-    //     body: {
-    //         search: 'Fries'
-    //     }
-    // })
-    // if (Array.isArray(data)) {
-    //     recipes.value = [ ...data]
-    // } else {
-    //     recipes.value = data
-    // }
-    // console.log("data", data);
+function truncated(textLength) {
+    return !!(media.value && textLength > 80 || !media.value && textLength > 200)
+}
 
-})
 </script>
 
 <template>
@@ -71,28 +61,39 @@ onMounted(async () => {
         }"
         @click="handleClose"
     ></div>
+    <!-- <div 
+        v-if="recipes.length === 0 && searchOpened && !searchFocused" 
+        class="no-results"
+        @click="handleClose"
+    >
+        No Results
+    </div> -->
     <section class="recipes-container" :class="{
         'show': searchOpened
     }">
+        <div v-if="!recipes.length && searched" class="no-results">
+            No results
+        </div>
         <div
             v-for="(recipe, index) in recipes" :key="index"
             class="recipe"
         >
             <div class="recipe-block">
-                <div class="title" :style="{
+                <div class="recipe-image" :style="{
                     'background-image': `url(${recipe.image})`,
                 }">
-                    <h4>
-                        {{recipe.name}}
-                    </h4>
+                    
                 </div>
                 <div class="description">
                     <span v-if="!recipe.showMore">
+                        <h4>
+                            {{recipe.name}}
+                        </h4>
                         {{ truncate(recipe.description) }}
                         <br>
                         <div class="show-more-less">
                             <span
-                                v-if="recipe.description?.length > 200"
+                                v-if="truncated(recipe.description?.length)"
                                 :data-recipe="index"
                                 @click="handleShowMore" 
                             >
@@ -101,6 +102,9 @@ onMounted(async () => {
                         </div>
                     </span>
                     <span v-else >
+                        <h4>
+                            {{recipe.name}}
+                        </h4>
                         {{ recipe.description }}
                         <div class="show-more-less">
                             <span
@@ -131,6 +135,16 @@ onMounted(async () => {
 </template>
 
 <style scoped>
+.no-results {
+    color: #fff;;
+    /* position: absolute; */
+    text-align: center;
+    font-weight: bold;
+    font-size: xx-large;
+    padding: 3rem 5rem;
+    z-index: 23;
+    background-color: rgba(0, 0, 0, 0.623);
+}
 .spacer {
     height: 100%;
 }
@@ -178,17 +192,23 @@ onMounted(async () => {
     margin-bottom: .51rem;
     border-bottom: solid 1px gray;
     box-shadow: 0 .3rem .5rem rgba(0, 0, 0, .13);
-    min-height: 90px;
     max-width: 800px;
+    /* height: 190px; */
 }
-.title  {
+.recipe-image  {
     color: #fff;
     padding: .3rem;
     margin-right: 1rem;
     margin-left: .51rem;
     min-width: 110px;
+    max-width: 150px;
+    height: 70px;
     background-color: rgba(133, 133, 133, 0.527);
     background-size: cover;
+}
+h4 {
+    margin: 0;
+    margin-bottom: .3rem;
 }
 .description {
     max-width: 300px;

@@ -8,21 +8,13 @@ useHead({
     <div class="home-page">
         <div class="home-container">
             <div class="header">
-                <div class="logo">
-                    <img src="~/assets/images/UCDavisHealth.svg" alt="test" width="140">
-                    <div class="text">
-                        Food and
-                        <br>
-                        Nutrition Services
-                    </div>
-                </div>
-
+                <UCDHLogo />
             </div>
         <div class="hero">
-                <div class="hero-title">
-                    <h1>Farm Fresh Recipes</h1>
-                    <span>this month's recipes</span>
-                </div>
+            <div class="hero-title">
+                <h1>Farm Fresh Recipes</h1>
+                <span>this month's recipes</span>
+            </div>
         </div>
         <div class="content">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint harum quidem quibusdam aliquam. Dolores illo quod, quidem illum recusandae adipisci ducimus et corrupti? Odio nihil culpa temporibus nisi quaerat quis, quidem qui consectetur, eligendi harum quas libero iure excepturi consequatur iusto atque nesciunt reprehenderit rem error quos incidunt. Eaque consectetur explicabo laboriosam, assumenda numquam suscipit? Animi aspernatur ut cumque quia maiores quas dolore vel enim nisi consequatur laudantium repellat, quibusdam eaque labore accusamus neque non doloribus ratione autem corrupti sed repellendus maxime velit quam. Numquam voluptatum natus dignissimos, hic suscipit sint nemo, quidem ipsam, labore modi asperiores laboriosam culpa fugit.
@@ -32,17 +24,17 @@ useHead({
 </template>
 
 <style scoped>
-.logo {
+/* .logo {
     padding: 3rem;
     color: #002855;
     font-size: 1.75em;
     display: flex;
-}
-.text {
+} */
+/* .text {
     border-left: #002855 solid 1px;
     margin-left: 1rem;
     padding-left: 1rem;
-}
+} */
 .home-page {
     display: flex;
     justify-content: center;
@@ -60,7 +52,7 @@ useHead({
     background-blend-mode: color-burn;
     display: flex;
     margin: 1rem 0;
-    padding: 2rem;
+    
 }
 h1 {
     font-size: 4rem;
@@ -86,5 +78,10 @@ h1 {
 }
 .content {
     padding: 2rem;
+}
+@media (min-width:700px) {
+    .hero {
+        padding: 2rem;
+    }
 }
 </style>

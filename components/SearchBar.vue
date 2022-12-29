@@ -1,10 +1,11 @@
 <script setup>
 const searchInputRef = ref(null);
 const search = useState('search', () => 'all uc davis recipes');
-const recipes = useState('recipes', () => []);
 const searchFocused = useState('search-focus', () => false);
-const media = useState('media-query',() => '');
 const searchOpened = useState('search-opened',() =>false);
+const searched = useState('searched', () => false);
+const recipes = useState('recipes', () => []);
+const media = useState('media-query',() => '');
 
 async function handleSearch(e) {
     e.preventDefault()
@@ -24,9 +25,10 @@ async function handleSearch(e) {
         recipes.value.forEach(recipe => {
             recipe.showMore = false;
         })
-        console.log("data", resp.data);
     } catch (error) {
         throw new Error(error);
+    } finally {
+        searched.value = true;
     }
 }
 
@@ -45,9 +47,18 @@ function closeSearch () {
     searchFocused.value = false;
 }
 
+function handleCloseResults() {
+    searchOpened.value = false;
+    searchInputRef.value.blur();
+}
+
 watch(searchFocused, () => {
     if (searchFocused.value) {
         searchOpened.value = true;
+        window.scroll({
+            behavior: 'smooth',
+            top: 0,
+        })
     }
 })
 
@@ -71,6 +82,7 @@ onBeforeUnmount(() => {
             type="text"
             :placeholder="media ? '🔍' : 'search'"
             @keyup.enter="handleSearch"
+            @keyup.esc="handleCloseResults"
             @change="handleInput"
         >
         <div class="nav-section" v-if="!searchFocused">
@@ -88,13 +100,24 @@ onBeforeUnmount(() => {
                 </ul>
             </nav>
         </div>
-        <div v-if="media" class="login" >
-
+        <div v-if="media && searchOpened && !searchFocused" class="right-side" >
+            <span @click="handleCloseResults">❌</span>
         </div>
     </div>
 </template>
 
 <style scoped>
+.right-side {
+    display: grid;
+    justify-content: end;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+.right-side span {
+    padding-right: 1rem;
+    cursor: pointer;
+}
 li * {
     text-decoration: none;
     color: gray;
@@ -114,8 +137,11 @@ li *:active {
     font-weight: bold;
 }
 .search-bar {
-    z-index: 10;
+    top: 0;
+    position: sticky;
+    z-index: 20;
     display: grid;
+    align-items: center;
     grid-template-columns: 80px 2fr 80px;
     gap:0;
     transition: 
@@ -123,6 +149,7 @@ li *:active {
         ease-out .11s background-color
         ;
     height: 60px;
+    background-color: #fff;
 }
 
 .search-bar-focused {
@@ -133,7 +160,7 @@ li *:active {
 }
 
 input {
-    padding: .5rem 1rem;
+    padding: .5rem;
     border: none;
     border-radius: 5rem;
     margin: 1rem;
@@ -174,6 +201,7 @@ input:focus {
 @media (min-width: 670px) {
     input {
         width: 40px;
+        padding: .5rem 1rem;
     }
     .nav-section > nav > ul > li {
         padding: .2rem 1rem;
