@@ -79,14 +79,22 @@ function truncated(textLength) {
             class="recipe"
         >
             <div class="recipe-block">
-                <div class="recipe-image" :style="{
-                    'background-image': `url(${recipe.image})`,
-                }">
+                <div 
+                    class="recipe-image" 
+                    :style="{
+                        'background-image': `url(${recipe.image})`,
+                    }"
+                    :data-id="recipe.id"
+                    @click="handleShowRecipe" 
+                >
                     
                 </div>
                 <div class="description">
                     <span v-if="!recipe.showMore">
-                        <h4>
+                        <h4
+                            :data-id="recipe.id"
+                            @click="handleShowRecipe" 
+                        >
                             {{recipe.name}}
                         </h4>
                         {{ truncate(recipe.description) }}
@@ -102,7 +110,10 @@ function truncated(textLength) {
                         </div>
                     </span>
                     <span v-else >
-                        <h4>
+                        <h4
+                            :data-id="recipe.id"
+                            @click="handleShowRecipe" 
+                        >
                             {{recipe.name}}
                         </h4>
                         {{ recipe.description }}
@@ -205,10 +216,12 @@ function truncated(textLength) {
     height: 70px;
     background-color: rgba(133, 133, 133, 0.527);
     background-size: cover;
+    cursor: pointer;
 }
 h4 {
     margin: 0;
     margin-bottom: .3rem;
+    cursor: pointer;
 }
 .description {
     max-width: 300px;
