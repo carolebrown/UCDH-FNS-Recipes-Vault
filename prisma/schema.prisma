@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Recipes {
+  id           BigInt  @id @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
+  name         String? @db.Text
+  description  String? @db.Text
+  ingredients  Json?
+  instructions Json?
+  servings     Int?
+  total_time   Int?
+  prep_time    Int?
+  cook_time    Int?
+  keywords     String? @db.Text
+  image        String? @db.Text
+}
