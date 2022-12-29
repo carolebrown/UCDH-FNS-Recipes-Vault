@@ -5,7 +5,6 @@ const recipe = ref([]);
 onMounted(async () => {
     let resp = await $fetch(`/api/recipe/${route.params.id}`)
     recipe.value = resp.data;
-    console.log("recipe.value", recipe.value.instructions);
 })
 </script>
 <template>
@@ -15,7 +14,7 @@ onMounted(async () => {
         <div class="description">
             {{ recipe.description }}
         </div>
-            <div class="image-box">
+            <div v-if="recipe.image" class="image-box">
                 <img :src="recipe.image" alt="picture of the food for the recipe"/>
             </div>
         <div class="instructions">
