@@ -97,7 +97,6 @@ function handleRoute() {
 .hero-main-text {
   margin-top: 5rem;
   margin-left: 1rem;
-  width: 500px;
 }
 .hero-main-text > h1 {
   margin-top: 1.5rem;
@@ -174,6 +173,9 @@ h1 {
   }
   .csa-monthly-contents {
     padding-right: 6rem;
+  }
+  .hero-main-text {
+    width: 500px;
   }
 }
 </style>
