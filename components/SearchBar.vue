@@ -39,8 +39,8 @@ function handleInput(e) {
 function focusSelect (e) {
     e.preventDefault();
     searchFocused.value = true;
-    if (media.value) return;
-    searchInputRef.value.select();
+    // if (media.value) return;
+    // searchInputRef.value.select();
 }
 
 function closeSearch () {
