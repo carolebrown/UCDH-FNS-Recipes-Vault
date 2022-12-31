@@ -38,9 +38,7 @@ function handleInput(e) {
 
 function focusSelect (e) {
     e.preventDefault();
-    setTimeout(() => {
-        searchFocused.value = true;
-    }, 100);
+    searchFocused.value = true;
     // if (media.value) return;
     // searchInputRef.value.select();
 }

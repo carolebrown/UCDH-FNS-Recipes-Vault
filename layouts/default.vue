@@ -18,6 +18,7 @@ const media = useState('media-query');
 .app-layout {
     display: grid;
     grid-template-rows: auto 0 1fr auto;
+    overflow: scroll;
     height: 100vh;
     position: relative;
 }
