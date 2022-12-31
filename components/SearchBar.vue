@@ -40,7 +40,7 @@ function focusSelect (e) {
     e.preventDefault();
     setTimeout(() => {
         searchFocused.value = true;
-    }, 10);
+    }, 100);
     // if (media.value) return;
     // searchInputRef.value.select();
 }
