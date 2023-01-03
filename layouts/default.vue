@@ -9,15 +9,15 @@ const media = useState('media-query');
         <section>
             <slot />
         </section>
-        <AppFooter v-if="media" />
-        <HomeFooter v-else />
+        <!-- <AppFooter v-if="media" /> -->
+        <HomeFooter />
     </div>
 </template>
 
 <style scoped>
 .app-layout {
     display: grid;
-    grid-template-rows: auto 0 1fr auto;
+    grid-template-rows: auto 0 1fr 0;
     overflow: scroll;
     height: 100vh;
     position: relative;

@@ -92,11 +92,11 @@ onBeforeUnmount(() => {
                         <NuxtLink href="/">Home</NuxtLink>
                     </li>
                     <li>
-                        <NuxtLink href="/recipes">Recipes</NuxtLink>
+                        <a target="_blank" href="http://seasonalfoodguide.org">Seasonality</a>
                     </li>
-                    <li>
-                        <NuxtLink href="/about">About</NuxtLink>
-                    </li>
+                    <!-- <li>
+                        <a target="_blank" href="">{{  media ? 'UCDH FNS' : 'UC Davis Health FNS' }}</a>
+                    </li> -->
                 </ul>
             </nav>
         </div>
