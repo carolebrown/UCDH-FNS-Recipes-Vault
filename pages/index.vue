@@ -61,9 +61,8 @@ function handleRoute() {
             <h2>Spotlight on</h2>
             <div class="spotlight-image" @click="handleReroute"></div>
             <p>
-              J. Marchini specializes in Italian specialty produce, including a line of
-              year-round and seasonal varieties of radicchio. For more information, visit
-              _____
+                J. Marchini specializes in Italian produce, including a line of
+              year-round and seasonal varieties of radicchio. Learn more about this month's J. Marchini picks, <a target="_blank" href="https://static1.squarespace.com/static/5ed5348d9f128313d67e1993/t/5f5ecbd695f3c97d387dbfce/1600048093497/JMarchini-Farms_Info-Treviso.pdf">Treviso</a> and <a target="_blank" href="https://static1.squarespace.com/static/5ed5348d9f128313d67e1993/t/5f5ec974656dea0885b07317/1600047485828/JMarchini-Farms_Info-Castelfranco.pdf">Castelfranco</a>. 
             </p>
           </div>
         </div>
