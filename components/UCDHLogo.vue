@@ -12,12 +12,12 @@
 <style scoped>
 .logo {
     padding: 3rem;
-    color: #002855;
+    color: #022851;
     font-size: 1.75em;
     display: flex;
 }
 .text {
-    border-left: #002855 solid 1px;
+    border-left: #022851 solid 1px;
     margin-left: 1rem;
     padding-left: 1rem;
 }

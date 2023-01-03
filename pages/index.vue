@@ -38,7 +38,7 @@ function handleRoute() {
             <h2>January CSA Contents</h2>
             <i
               >January is a time when seasonal crops may be more limited, even in
-              California. This month's CSA bag makes good use of year-round vegetables as
+              California. This month's CSA bag makes good use of year-round crops as
               well as limited seasonal varieties.</i
             >
 

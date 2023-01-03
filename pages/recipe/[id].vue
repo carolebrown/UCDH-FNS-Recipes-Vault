@@ -22,7 +22,7 @@ onMounted(async () => {
                 <h2>Ingredients</h2>
                 <ul>
                     <li v-for="([quantity, ingredient], index) in recipe.ingredients" :key="index">
-                        <strong>{{ quantity }}</strong> - {{ ingredient }}
+                        <strong>{{ quantity }}</strong> {{ ingredient }}
                     </li>
                 </ul>
             </div>

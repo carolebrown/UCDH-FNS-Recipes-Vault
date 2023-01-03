@@ -1,6 +1,6 @@
 <script setup>
 useHead({
-    title: 'UC Davis | Recipes Overview'
+    title: 'UC Davis Health | Recipes Overview'
 })
 </script>
 
