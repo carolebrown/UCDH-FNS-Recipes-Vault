@@ -5,6 +5,9 @@ const recipe = ref([]);
 onMounted(async () => {
     let resp = await $fetch(`/api/recipe/${route.params.id}`)
     recipe.value = resp.data;
+
+    console.log("resp.data", resp.data);
+
 })
 </script>
 <template>
