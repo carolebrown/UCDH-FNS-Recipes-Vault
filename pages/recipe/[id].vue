@@ -34,6 +34,14 @@ onMounted(async () => {
                     </li>
                 </ul>
             </div>
+            <div class="instructions">
+                <h2>Related Recipes</h2>
+                <ul>
+                    <li v-for="([linkedRecipe, name], index) in recipe.linked_recipes" :key="index">
+                        <NuxtLink :href="linkedRecipe">{{ name }}</NuxtLink>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </template>

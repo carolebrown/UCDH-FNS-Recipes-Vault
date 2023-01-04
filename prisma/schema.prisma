@@ -8,15 +8,16 @@ datasource db {
 }
 
 model Recipes {
-  id           BigInt  @id @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
-  name         String? @db.Text
-  description  String? @db.Text
-  ingredients  Json?
-  instructions Json?
-  servings     Int?
-  total_time   Int?
-  prep_time    Int?
-  cook_time    Int?
-  keywords     String? @db.Text
-  image        String? @db.Text
+  id             BigInt  @id @unique(map: "id") @default(autoincrement()) @db.UnsignedBigInt
+  name           String? @db.Text
+  description    String? @db.Text
+  ingredients    Json?
+  instructions   Json?
+  servings       Int?
+  total_time     Int?
+  prep_time      Int?
+  cook_time      Int?
+  keywords       String? @db.Text
+  image          String? @db.Text
+  linked_recipes Json?
 }
