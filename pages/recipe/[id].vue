@@ -37,7 +37,7 @@ onMounted(async () => {
                     </li>
                 </ul>
             </div>
-            <div class="instructions">
+            <div class="relatedrecipes">
                 <h2>Related Recipes</h2>
                 <ul>
                     <li v-for="([linkedRecipe, name], index) in recipe.linked_recipes" :key="index">
